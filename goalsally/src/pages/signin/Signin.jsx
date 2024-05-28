@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import Googleloginbutton from '../../components';
+import { Googleloginbutton } from '../../components';
 
 const Signin = () => {
   const [message, setMessage] = useState('');
@@ -21,6 +21,7 @@ const Signin = () => {
   const onSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await axios.post('http://localhost:5000/api/auth/signin', values);
+      console.log(response);  // Use the response variable here
       setMessage('Signin successful');
     } catch (error) {
       setMessage('Signin failed');
@@ -63,3 +64,4 @@ const Signin = () => {
 };
 
 export default Signin;
+

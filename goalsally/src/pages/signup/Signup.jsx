@@ -23,6 +23,7 @@ const Signup = () => {
   const onSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await axios.post('http://localhost:5000/api/auth/signup', values);
+      console.log(response);  // Use the response variable here
       setMessage('Signup successful');
     } catch (error) {
       setMessage('Signup failed');
