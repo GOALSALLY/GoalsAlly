@@ -1,0 +1,1 @@
+export { default as Googleloginbutton } from './googleloginbutton/Googleloginbutton'
