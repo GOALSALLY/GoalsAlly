@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express()
 const mongoose = require('mongoose');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
@@ -14,7 +15,6 @@ const limiter = rateLimit({
 // Apply rate limiter to all requests
 app.use(limiter);
 
-const app = express();
 app.use(express.json());
 app.use(cors());
 
