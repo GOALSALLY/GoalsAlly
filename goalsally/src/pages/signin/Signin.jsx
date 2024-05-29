@@ -3,9 +3,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Googleloginbutton } from '../../components';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 const Signin = () => {
   const [message, setMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {
     email: '',
@@ -37,13 +39,19 @@ const Signin = () => {
         {({ isSubmitting }) => (
           <Form>
             <div>
-              <label htmlFor="email">Email</label>
+              <label for="email">Email</label>
               <Field type="email" name="email" />
+              <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{ position: 'absolute', right: 10, top: 10, cursor: 'pointer' }}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
               <ErrorMessage name="email" component="div" />
             </div>
             <div>
-              <label htmlFor="password">Password</label>
-              <Field type="password" name="password" />
+              <label for="password">Password</label>
+              <Field type={showPassword ? "text" : "password"} name="password" onChange={handleChange}/>
               <ErrorMessage name="password" component="div" />
             </div>
             <div>
