@@ -9,6 +9,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
+    "express-rate-limit": "^7.2.0",
     "formik": "^2.4.6",
     "nth-check": "2.1.1",
     "react": "^18.3.1",
