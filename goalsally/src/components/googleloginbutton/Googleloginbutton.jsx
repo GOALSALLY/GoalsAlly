@@ -2,25 +2,30 @@ import React from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 const Googleloginbutton = () => {
-  const handleLoginSuccess = (response) => {
+  const clientId = '737830184938-edhgbhqp72mfd5368d0vuvd75vq9sevv.apps.googleusercontent.com';
+
+  const onSuccess = (response) => {
     console.log('Login Success:', response);
-    // Handle successful login and token storage
+    // Handle successful login here
   };
 
-  const handleLoginFailure = (response) => {
-    console.error('Login Failure:', response);
-    // Handle failed login
+  const onError = () => {
+    console.log('Login failed');
+    alert('Failed to login with Google. Please try again.');
   };
 
   return (
-    <GoogleOAuthProvider clientId="737830184938-edhgbhqp72mfd5368d0vuvd75vq9sevv.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={clientId}>
       <GoogleLogin
-        onSuccess={handleLoginSuccess}
-        onFailure={handleLoginFailure}
         buttonText="Login with Google"
+        onSuccess={onSuccess}
+        onError={onError}
+        cookiePolicy={'single_host_origin'}
+        isSignedIn={true}
       />
     </GoogleOAuthProvider>
   );
 };
 
 export default Googleloginbutton;
+
